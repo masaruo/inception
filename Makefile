@@ -6,7 +6,7 @@
 #    By: mogawa <masaruo@gmail.com>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/21 14:53:44 by mogawa            #+#    #+#              #
-#    Updated: 2024/10/22 15:20:41 by mogawa           ###   ########.fr        #
+#    Updated: 2024/10/22 16:16:36 by mogawa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,9 @@ clean:
 
 fclean:
 	docker-compose -f ./srcs/docker-compose.yml down --volumes --rmi all
+
+log:
+	docker-compose -f ./srcs/docker-compose.yml logs
 
 re: clean up
 
