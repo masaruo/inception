@@ -26,9 +26,6 @@ services:
     build: ./requirements/nginx
     ports:
       - "443:443"
-    depends_on:
-      wordpress:
-        condition: service_healthy
     volumes:
       - type: volume
         source: wordpress_volume
@@ -38,14 +35,14 @@ services:
     networks:
       - inception
     restart: always
+    depends_on:
+      wordpress:
+        condition: service_healthy
 # wordpress
   wordpress:
     image: wordpress:user
     container_name: wordpress
     build: ./requirements/wordpress
-    depends_on:
-      mariadb:
-        condition: service_healthy
     volumes:
       - type: volume
         source: wordpress_volume
@@ -55,6 +52,9 @@ services:
     networks:
       - inception
     restart: always
+    depends_on:
+      mariadb:
+        condition: service_healthy
     healthcheck:
       test: ["CMD", "php-fpm7.4", "-t"]
       interval: 10s

@@ -6,7 +6,7 @@
 #    By: mogawa <masaruo@gmail.com>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/21 14:53:44 by mogawa            #+#    #+#              #
-#    Updated: 2024/10/22 16:16:36 by mogawa           ###   ########.fr        #
+#    Updated: 2024/10/22 16:46:08 by mogawa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,5 +34,8 @@ re: clean up
 
 test:
 	curl -k https://mogawa.42.fr
+
+debian:
+	docker container run --rm -it debian:inception bash
 
 .PHONY: up down build clean re test
