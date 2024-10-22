@@ -6,7 +6,7 @@
 #    By: mogawa <masaruo@gmail.com>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/21 14:53:44 by mogawa            #+#    #+#              #
-#    Updated: 2024/10/22 11:42:09 by mogawa           ###   ########.fr        #
+#    Updated: 2024/10/22 15:20:41 by mogawa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,4 +29,7 @@ fclean:
 
 re: clean up
 
-.PHONY: up down build clean re
+test:
+	curl -k https://mogawa.42.fr
+
+.PHONY: up down build clean re test
