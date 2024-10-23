@@ -6,7 +6,7 @@
 #    By: mogawa <masaruo@gmail.com>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/21 14:53:44 by mogawa            #+#    #+#              #
-#    Updated: 2024/10/22 16:46:08 by mogawa           ###   ########.fr        #
+#    Updated: 2024/10/23 10:34:47 by mogawa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ build:
 	docker-compose -f ./srcs/docker-compose.yml build
 
 clean:
-	docker-compose -f ./srcs/docker-compose.yml down
+	docker-compose -f ./srcs/docker-compose.yml down --volumes
 
 fclean:
 	docker-compose -f ./srcs/docker-compose.yml down --volumes --rmi all
