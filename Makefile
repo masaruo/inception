@@ -6,13 +6,21 @@
 #    By: mogawa <masaruo@gmail.com>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/21 14:53:44 by mogawa            #+#    #+#              #
-#    Updated: 2024/10/23 10:34:47 by mogawa           ###   ########.fr        #
+#    Updated: 2024/10/23 16:32:52 by mogawa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-all: up
+include srcs/.env
 
-up: build
+all: prepare build up
+
+prepare:
+	@sudo mkdir -p $(LOCAL_DATA_PATH)/mariadb
+	@sudo mkdir -p $(LOCAL_DATA_PATH)/wordpress
+	@sudo chmod 755 $(LOCAL_DATA_PATH)/mariadb
+	@sudo chmod 755 $(LOCAL_DATA_PATH)/wordpress
+
+up:
 	docker-compose -f ./srcs/docker-compose.yml up -d
 
 down:
@@ -23,14 +31,16 @@ build:
 
 clean:
 	docker-compose -f ./srcs/docker-compose.yml down --volumes
+	sudo rm -rf $(LOCAL_DATA_PATH)
 
 fclean:
 	docker-compose -f ./srcs/docker-compose.yml down --volumes --rmi all
+	sudo rm -rf $(LOCAL_DATA_PATH)
 
 log:
 	docker-compose -f ./srcs/docker-compose.yml logs
 
-re: clean up
+re: clean all
 
 test:
 	curl -k https://mogawa.42.fr
@@ -38,4 +48,4 @@ test:
 debian:
 	docker container run --rm -it debian:inception bash
 
-.PHONY: up down build clean re test
+.PHONY: all prepare up down build clean fclean log re test

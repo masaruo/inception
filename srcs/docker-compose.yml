@@ -5,9 +5,7 @@ services:
     container_name: mariadb
     build: ./requirements/mariadb
     volumes:
-      - type: volume
-        source: mariadb_volume
-        target: /var/lib/mysql
+        - mariadb_volume:/var/lib/mysql
     env_file:
       - .env
     environment:
@@ -32,9 +30,7 @@ services:
     ports:
       - "443:443"
     volumes:
-      - type: volume
-        source: wordpress_volume
-        target: /var/www/wordpress
+      - wordpress_volume:/var/www/wordpress
     env_file:
       - .env
     networks:
@@ -49,9 +45,7 @@ services:
     container_name: wordpress
     build: ./requirements/wordpress
     volumes:
-      - type: volume
-        source: wordpress_volume
-        target: /var/www/wordpress
+      - wordpress_volume:/var/www/wordpress
     env_file:
       - .env
     networks:
@@ -67,12 +61,21 @@ services:
       retries: 5
       start_period: 5s
 
-# volume
 volumes:
   mariadb_volume:
     name: mariadb_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: ${LOCAL_DATA_PATH}/mariadb
+      o: bind
   wordpress_volume:
     name: wordpress_volume
+    driver: local
+    driver_opts:
+      type: none
+      device: ${LOCAL_DATA_PATH}/wordpress
+      o: bind
 
 # network
 networks:
