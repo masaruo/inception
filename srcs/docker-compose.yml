@@ -63,19 +63,19 @@ services:
 
 volumes:
   mariadb_volume:
-    name: mariadb_volume
-    driver: local
-    driver_opts:
-      type: none
-      device: ${LOCAL_DATA_PATH}/mariadb
-      o: bind
+    # name: mariadb_volume
+    # driver: local
+    # driver_opts:
+    #   type: none
+    #   device: ${LOCAL_DATA_PATH}/mariadb
+    #   o: bind
   wordpress_volume:
-    name: wordpress_volume
-    driver: local
-    driver_opts:
-      type: none
-      device: ${LOCAL_DATA_PATH}/wordpress
-      o: bind
+    # name: wordpress_volume
+    # driver: local
+    # driver_opts:
+    #   type: none
+    #   device: ${LOCAL_DATA_PATH}/wordpress
+    #   o: bind
 
 # network
 networks:
