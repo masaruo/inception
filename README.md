@@ -1,6 +1,9 @@
 ### How to use
-1. make
-2. https://localhost:443
+* `make` to start `mariadb`, `wordpress` and `nginx`
+* `make down` to docker compose down
+
+### Access
+`https://localhost:443`
 
 ### 注意点
 * 課題ではvoluemeは`bind`だが、`volume`に変更

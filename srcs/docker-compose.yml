@@ -1,7 +1,7 @@
 services:
 # mariadb
   mariadb:
-    image: mariadb:user
+    image: mariadb:inception
     container_name: mariadb
     build: ./requirements/mariadb
     volumes:
@@ -24,7 +24,7 @@ services:
       start_period: 5s
 # nginx
   nginx:
-    image: nginx:user
+    image: nginx:inception
     container_name: nginx
     build: ./requirements/nginx
     ports:
@@ -41,7 +41,7 @@ services:
         condition: service_healthy
 # wordpress
   wordpress:
-    image: wordpress:user
+    image: wordpress:inception
     container_name: wordpress
     build: ./requirements/wordpress
     volumes:
